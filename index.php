@@ -23,6 +23,14 @@
 
       $responseTimbre = $clienteFD->timbrarXML($parametros);//se llama al método timbrarXML y se mandan los parametros (acessos y comprobante)
 
+
+      $datosCertificado = openssl_x509_parse(file_get_contents($filecer));
+      $fechaInicio = date('Y-m-d H:i:s', $datosCertificado['validFrom_time_t']); //Se obtiene la fecha de inicio de vigencia del certificado
+      $fechaFin = date('Y-m-d H:i:s', $datosCertificado['validTo_time_t']); //Se obtiene la fecha de fin de vigencia del certificado
+      echo "Fecha Inicio: $fechaInicio <br>";
+      echo "Fecha Fin: $fechaFin <br>";
+
+
       if(isset($responseTimbre->acuseCFDI->error)){ //Si ocurrio un error al momento de timbrar el xml enviado se mostrará en pantalla
         echo "codigoErr: " . $responseTimbre->acuseCFDI->error. "<br>";
       }

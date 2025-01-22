@@ -48,6 +48,7 @@
         public function getDate(){
             $date = date('Y-m-d H:i:s');
             $this->xml['Fecha']=str_replace(' ','T',$date);
+            // $this->xml['Fecha']="2023-03-01T16:17:18"; //Fecha de prueba
         }
         
         function getNoCertificado($serial){
